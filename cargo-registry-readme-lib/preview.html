@@ -1,0 +1,443 @@
+<h1><a href="#rusty_paseto" id="user-content-rusty_paseto" rel="nofollow noopener noreferrer"></a>rusty_paseto</h1>
+<p>A type-driven, ergonomic implementation of the <a href="https://github.com/paseto-standard/paseto-spec" rel="nofollow noopener noreferrer">PASETO</a> protocol for secure stateless tokens.</p>
+<h3><a href="#paseto-platform-agnostic-security-tokens" id="user-content-paseto-platform-agnostic-security-tokens" rel="nofollow noopener noreferrer"></a>PASETO: Platform-Agnostic Security Tokens</h3>
+<p>Paseto is everything you love about JOSE (JWT, JWE, JWS) without any of the
+<a href="https://paragonie.com/blog/2017/03/jwt-json-web-tokens-is-bad-standard-that-everyone-should-avoid" rel="nofollow noopener noreferrer">many design deficits that plague the JOSE standards</a>.</p>
+<p><img src="https://github.com/rrrodzilla/rusty_paseto/actions/workflows/rust.yml/badge.svg" alt="unit tests">
+<img src="https://img.shields.io/github/license/rrrodzilla/rusty_paseto?label=License" alt="GitHub"></p>
+<h2><a href="#roadmap-and-current-feature-status" id="user-content-roadmap-and-current-feature-status" rel="nofollow noopener noreferrer"></a>Roadmap and Current Feature Status</h2>
+<table>
+<thead>
+<tr>
+<th align="right">APIs, Tests &amp; Documentation</th>
+<th align="center">v1.<br>local</th>
+<th align="center">v1.<br>public</th>
+<th align="center">v2.<br>local</th>
+<th align="center">v2.<br>public</th>
+<th align="center">v3.<br>local</th>
+<th align="center">v3.<br>public</th>
+<th align="center">v4.<br>local</th>
+<th align="center">v4.<br>public</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">PASETO Token Builder</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:black_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+</tr>
+<tr>
+<td align="right">PASETO Token Parser</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:black_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+</tr>
+<tr>
+<td align="right">Flexible Claim Validation</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:black_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+</tr>
+<tr>
+<td align="right">Generic Token Builder</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:black_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+</tr>
+<tr>
+<td align="right">Generic Token Parser</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:black_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+</tr>
+<tr>
+<td align="right">Encryption/Signing</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:black_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+</tr>
+<tr>
+<td align="right">Decryption/Verification</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:black_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+</tr>
+<tr>
+<td align="right"><a href="https://github.com/paseto-standard/test-vectors" rel="nofollow noopener noreferrer">PASETO Test vectors</a></td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:black_circle:</td>
+<td align="center">:green_circle:</td>
+<td align="center">:green_circle:</td>
+</tr>
+<tr>
+<td align="right">Documentation</td>
+<td align="center">:black_circle:</td>
+<td align="center">:black_circle:</td>
+<td align="center">:orange_circle:</td>
+<td align="center">:black_circle:</td>
+<td align="center">:black_circle:</td>
+<td align="center">:black_circle:</td>
+<td align="center">:black_circle:</td>
+<td align="center">:black_circle:</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="right">Feature</th>
+<th align="center">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">Feature gates</td>
+<td align="center">:green_circle:</td>
+</tr>
+<tr>
+<td align="right">PASERK support</td>
+<td align="center">:black_circle:</td>
+</tr>
+</tbody>
+</table>
+<h1><a href="#usage" id="user-content-usage" rel="nofollow noopener noreferrer"></a>Usage</h1>
+<p>rusty_paseto is meant to be flexible and configurable for your specific use case.  Whether you want to get started quickly with sensible defaults, create your own version of rusty_paseto in order to customize your own defaults and functionality or just want to use the core PASETO crypto features, the crate is heavily feature gated to allow for your needs.</p>
+<h2><a href="#architecture" id="user-content-architecture" rel="nofollow noopener noreferrer"></a>Architecture</h2>
+<p>The rusty_paseto crate architecture is composed of three layers (batteries_included, generic and core) which can be further refined by the PASETO version(s) and purpose(s) required for your needs.  All layers use a common crypto core which includes various cipher crates depending on the version and purpose you choose.  The crate is heavily featured gated to allow you to use only the versions and purposes you need for your app which minimizes download compile times for using rusty_paseto.  A description of each architectural layer, their uses and limitations and how to minimize your required dependencies based on your required PASETO version and purpose follows:</p>
+<p><img src="https://user-images.githubusercontent.com/24578097/147881895-36878b22-bf17-49e4-98d7-f94920353368.png" alt="paseto_batteries_included_small">  <img src="https://user-images.githubusercontent.com/24578097/147881907-a765ede6-c8e5-44ff-9845-db53f0634f07.png" alt="paseto_generic_small">  <img src="https://user-images.githubusercontent.com/24578097/147881920-14c52256-1a0c-40be-9f18-759a8c9ad77d.png" alt="paseto_core_small"></p>
+<p>batteries_included  --&gt; generic --&gt; core</p>
+<h3><a href="#default" id="user-content-default" rel="nofollow noopener noreferrer"></a>default</h3>
+<p>The default feature is the quickest way to get started using rusty_paseto.</p>
+<p><img src="https://user-images.githubusercontent.com/24578097/147882602-0a88c55e-3ba9-4545-ba99-867406ac9c76.png" alt="paseto_default_small"></p>
+<p>The default feature includes the outermost architectural layer called batteries_included (described below) as well as the two latest PASETO versions (V3 - NIST MODERN, V4 - SODIUM MODERN) and the Public (Asymmetric) and Local (Symmetric) purposed key types for each of these versions.  That should be four specific version and purpose combinations however at the time of this writing I have yet to implement the V3 - Public combination, so there are 3 in the default feature.  Additionally, this feature includes JWT style claims and business rules for your PASETO token (default, but customizable expiration, issued at, not-before times, etc as described in the usage documentation and examples further below).</p>
+<pre><code class="language-toml">## Includes V3 (local) and V4 (local, public) versions, purposes and ciphers.
+
+rusty_paseto = "latest"
+</code></pre>
+<pre><code>// at the top of your source file
+use rusty_paseto::prelude::*;
+</code></pre>
+<h3><a href="#batteries_included" id="user-content-batteries_included" rel="nofollow noopener noreferrer"></a>batteries_included</h3>
+<p>The outermost architectural layer is called batteries_included.  This is what most people will need.  This feature includes JWT style claims and business rules for your PASETO token (default, but customizable expiration, issued at, not-before times, etc as described in the usage documentation and examples below).</p>
+<p><img src="https://user-images.githubusercontent.com/24578097/147881895-36878b22-bf17-49e4-98d7-f94920353368.png" alt="paseto_batteries_included_small"></p>
+<p>You must specify a version and purpose with this feature in order to reduce the size of your dependencies like in the following Cargo.toml entry which only includes the V4 - Local types with batteries_included functionality:</p>
+<pre><code class="language-toml">## Includes only v4 modern sodium cipher crypto core and local (symmetric)
+## key types with all claims and default business rules.
+
+rusty_paseto = {version = "latest", features = ["batteries_included", "v4_local"] }
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/24578097/147882822-46dac1d1-a922-4301-be45-d3341dabfee1.png" alt="paseto_batteries_included_v4_local_small"></p>
+<h4><a href="#feature-gates" id="user-content-feature-gates" rel="nofollow noopener noreferrer"></a>Feature gates</h4>
+<p>Valid version/purpose feature combinations are as follows:</p>
+<ul>
+<li>"v1_local" (NIST Original Symmetric Encryption)</li>
+<li>"v2_local" (Sodium Original Symmetric Encryption)</li>
+<li>"v3_local" (NIST Modern Symmetric Encryption)</li>
+<li>"v4_local" (Sodium Modern Symmetric Encryption)</li>
+<li>"v1_public" (NIST Original Asymmetric Authentication)</li>
+<li>"v2_public" (Sodium Original Asymmetric Authentication)</li>
+<li><em>"v3_public" (NIST Modern Asymmetric Authentication)</em> - <strong>NOT YET IMPLEMENTED</strong></li>
+<li>"v4_public" (Sodium Modern Asymmetric Authentication)</li>
+</ul>
+<pre><code>// at the top of your source file
+use rusty_paseto::prelude::*;
+</code></pre>
+<h3><a href="#generic" id="user-content-generic" rel="nofollow noopener noreferrer"></a>generic</h3>
+<p>The generic architectural and feature layer allows you to create your own custom version of the batteries_included layer by following the same pattern I've used in the source code to create your own custom builder and parser.  This is probably not what you need as it is for advanced usage.  The feature includes a generic builder and parser along with claims for you to extend.</p>
+<p><img src="https://user-images.githubusercontent.com/24578097/147881907-a765ede6-c8e5-44ff-9845-db53f0634f07.png" alt="paseto_generic_small"></p>
+<p>It includes all the PASETO and custom claims but allows you to create different default claims in your custom builder and parser or use a different time crate or make up your own default business rules.  As with the batteries_included layer, parsed tokens get returned as a serder_json Value. Again, specify the version and purpose to include in the crypto core:</p>
+<pre><code class="language-toml">## Includes only v4 modern sodium cipher crypto core and local (symmetric)
+## key types with all claims and default business rules.
+
+rusty_paseto = {version = "latest", features = ["generic", "v4_local"] }
+</code></pre>
+<pre><code>// at the top of your source file
+use rusty_paseto::generic::*;
+</code></pre>
+<h3><a href="#core" id="user-content-core" rel="nofollow noopener noreferrer"></a>core</h3>
+<p>The core architectural layer is the most basic PASETO implementation as it accepts a Payload, optional Footer and (if v3 or v4) an optional Implicit Assertion along with the appropriate key to encrypt/sign and decrypt/verify basic strings.</p>
+<p><img src="https://user-images.githubusercontent.com/24578097/147881920-14c52256-1a0c-40be-9f18-759a8c9ad77d.png" alt="paseto_core_small"></p>
+<p>There are no default claims or included claim structures, business rules or anything other than basic PASETO crypto functions.  Serde crates are not included in this feature so it is extremely lightweight.  You can use this when you don't need JWT-esque functionality but still want to leverage the safe cipher combinations and algorithm lucidity afforded by the PASETO specification.</p>
+<pre><code class="language-toml">## Includes only v4 modern sodium cipher crypto core and local (symmetric)
+## key types with NO claims, defaults or validation, just basic PASETO
+## encrypt/signing and decrypt/verification.
+
+rusty_paseto = {version = "latest", features = ["core", "v4_local"] }
+</code></pre>
+<h1><a href="#examples" id="user-content-examples" rel="nofollow noopener noreferrer"></a>Examples</h1>
+<h2><a href="#building-and-parsing-tokens-with-batteries_included" id="user-content-building-and-parsing-tokens-with-batteries_included" rel="nofollow noopener noreferrer"></a>Building and parsing tokens with batteries_included</h2>
+<p>Here's a basic, default token:</p>
+<pre><code class="language-rust">use rusty_paseto::prelude::*;
+
+// create a key specifying the PASETO version and purpose
+let key = PasetoSymmetricKey::&lt;V4, Local&gt;::from(Key::from(b"wubbalubbadubdubwubbalubbadubdub"));
+// use a default token builder with the same PASETO version and purpose
+let token = PasetoBuilder::&lt;V4, Local&gt;::default().build(&amp;key)?;
+// token is a String in the form: "v4.local.encoded-payload"
+
+</code></pre>
+<h2><a href="#a-default-token" id="user-content-a-default-token" rel="nofollow noopener noreferrer"></a>A default token</h2>
+<ul>
+<li>Has no <a href="https://github.com/paseto-standard/paseto-spec/tree/master/docs" rel="nofollow noopener noreferrer">footer</a></li>
+<li>Has no <a href="https://github.com/paseto-standard/paseto-spec/tree/master/docs" rel="nofollow noopener noreferrer">implicit assertion</a>
+for V3 or V4 versioned tokens</li>
+<li>Expires in <strong>1 hour</strong> after creation (due to an included default ExpirationClaim)</li>
+<li>Contains an IssuedAtClaim defaulting to the current utc time the token was created</li>
+<li>Contains a NotBeforeClaim defaulting to the current utc time the token was created</li>
+</ul>
+<p>You can parse and validate an existing token with the following:</p>
+<pre><code class="language-rust">let key = PasetoSymmetricKey::&lt;V4, Local&gt;::from(Key::from(b"wubbalubbadubdubwubbalubbadubdub"));
+// now we can parse and validate the token with a parser that returns a serde_json::Value
+let json_value = PasetoParser::&lt;V4, Local&gt;::default().parse(&amp;token, &amp;key)?;
+
+//the ExpirationClaim
+assert!(json_value["exp"].is_string());
+//the IssuedAtClaim
+assert!(json_value["iat"].is_string());
+
+</code></pre>
+<h2><a href="#a-default-parser" id="user-content-a-default-parser" rel="nofollow noopener noreferrer"></a>A default parser</h2>
+<ul>
+<li>Validates the token structure and decryptes the payload or verifies the signature of the content</li>
+<li>Validates the <a href="https://github.com/paseto-standard/paseto-spec/tree/master/docs" rel="nofollow noopener noreferrer">footer</a> if
+one was provided</li>
+<li>Validates the <a href="https://github.com/paseto-standard/paseto-spec/tree/master/docs" rel="nofollow noopener noreferrer">implicit assertion</a> if one was provided (for V3 or V4 versioned tokens only)</li>
+</ul>
+<h2><a href="#a-token-with-a-footer" id="user-content-a-token-with-a-footer" rel="nofollow noopener noreferrer"></a>A token with a footer</h2>
+<p>PASETO tokens can have an <a href="https://github.com/paseto-standard/paseto-spec/tree/master/docs" rel="nofollow noopener noreferrer">optional footer</a>.  In rusty_paseto we have strict types for most things.<br>
+So we can extend the previous example to add a footer to the token by using code like the
+following:</p>
+<pre><code class="language-rust">use rusty_paseto::prelude::*;
+let key = PasetoSymmetricKey::&lt;V4, Local&gt;::from(Key::from(b"wubbalubbadubdubwubbalubbadubdub"));
+let token = PasetoBuilder::&lt;V4, Local&gt;::default()
+  // note how we set the footer here
+  .set_footer(Footer::from("Sometimes science is more art than science"))
+  .build(&amp;key)?;
+
+// token is now a String in the form: "v4.local.encoded-payload.footer"
+
+</code></pre>
+<p>And parse it by passing in the same expected footer</p>
+<pre><code class="language-rust">// now we can parse and validate the token with a parser that returns a serde_json::Value
+let json_value = PasetoParser::&lt;V4, Local&gt;::default()
+  .set_footer(Footer::from("Sometimes science is more art than science"))
+  .parse(&amp;token, &amp;key)?;
+
+//the ExpirationClaim
+assert!(json_value["exp"].is_string());
+//the IssuedAtClaim
+assert!(json_value["iat"].is_string());
+
+</code></pre>
+<h2><a href="#a-token-with-an-implicit-assertion-v3-or-v4-versioned-tokens-only" id="user-content-a-token-with-an-implicit-assertion-v3-or-v4-versioned-tokens-only" rel="nofollow noopener noreferrer"></a>A token with an implicit assertion (V3 or V4 versioned tokens only)</h2>
+<p>Version 3 (V3) and Version 4 (V4) PASETO tokens can have an <a href="https://github.com/paseto-standard/paseto-spec/tree/master/docs" rel="nofollow noopener noreferrer">optional implicit assertion</a>.
+So we can extend the previous example to add an implicit assertion to the token by using code like the
+following:</p>
+<pre><code class="language-rust">use rusty_paseto::prelude::*;
+let key = PasetoSymmetricKey::&lt;V4, Local&gt;::from(Key::from(b"wubbalubbadubdubwubbalubbadubdub"));
+let token = PasetoBuilder::&lt;V4, Local&gt;::default()
+  .set_footer(Footer::from("Sometimes science is more art than science"))
+  // note how we set the implicit assertion here
+  .set_implicit_assertion(ImplicitAssertion::from("There’s a lesson here, and I’m not going to be the one to figure it out."))
+  .build(&amp;key)?;
+
+// token is now a String in the form: "v4.local.encoded-payload.footer"
+
+</code></pre>
+<p>And parse it by passing in the same expected implicit assertion at parse time</p>
+<pre><code class="language-rust">// now we can parse and validate the token with a parser that returns a serde_json::Value
+let json_value = PasetoParser::&lt;V4, Local&gt;::default()
+  .set_footer(Footer::from("Sometimes science is more art than science"))
+  .set_implicit_assertion(ImplicitAssertion::from("There’s a lesson here, and I’m not going to be the one to figure it out."))
+  .parse(&amp;token, &amp;key)?;
+
+</code></pre>
+<h2><a href="#setting-a-different-expiration-time" id="user-content-setting-a-different-expiration-time" rel="nofollow noopener noreferrer"></a>Setting a different expiration time</h2>
+<p>As mentioned, default tokens expire <strong>1 hour</strong> from creation time.  You can set your own
+expiration time by adding an ExpirationClaim which takes an ISO 8601 (Rfc3339) compliant datetime string.</p>
+<h4><a href="#note-claims-taking-an-iso-8601-rfc3339-string-use-the-tryfrom-trait-and-return-a-resultpasetoclaimerror" id="user-content-note-claims-taking-an-iso-8601-rfc3339-string-use-the-tryfrom-trait-and-return-a-resultpasetoclaimerror" rel="nofollow noopener noreferrer"></a>Note: <em>claims taking an ISO 8601 (Rfc3339) string use the TryFrom trait and return a Result&lt;(),PasetoClaimError&gt;</em></h4>
+<pre><code class="language-rust">use rusty_paseto::prelude::*;
+// must include
+use std::convert::TryFrom;
+let key = PasetoSymmetricKey::&lt;V4, Local&gt;::from(Key::from(b"wubbalubbadubdubwubbalubbadubdub"));
+// real-world example using the time crate to expire 5 minutes from now
+
+let token = PasetoBuilder::&lt;V4, Local&gt;::default()
+  // note the TryFrom implmentation for ExpirationClaim
+  //.set_claim(ExpirationClaim::try_from("2019-01-01T00:00:00+00:00")?)
+  .set_claim(ExpirationClaim::try_from(in_5_minutes)?)
+  .set_footer(Footer::from("Sometimes science is more art than science"))
+  .build(&amp;key)?;
+
+// token is a String in the form: "v4.local.encoded-payload.footer"
+
+</code></pre>
+<h2><a href="#tokens-that-never-expire" id="user-content-tokens-that-never-expire" rel="nofollow noopener noreferrer"></a>Tokens that never expire</h2>
+<p>A <strong>1 hour</strong> ExpirationClaim is set by default because the use case for non-expiring tokens in the world of security tokens is fairly limited.
+Omitting an expiration claim or forgetting to require one when processing them
+is almost certainly an oversight rather than a deliberate choice.</p>
+<p>When it is a deliberate choice, you have the opportunity to deliberately remove this claim from the Builder.
+The method call required to do so ensures readers of the code understand the implicit risk.</p>
+<pre><code class="language-rust">let token = PasetoBuilder::&lt;V4, Local&gt;::default()
+  .set_claim(ExpirationClaim::try_from(in_5_minutes)?)
+  // even if you set an expiration claim (as above) it will be ignored
+  // due to the method call below
+  .set_no_expiration_danger_acknowledged()
+  .build(&amp;key)?;
+
+</code></pre>
+<h2><a href="#setting-paseto-claims" id="user-content-setting-paseto-claims" rel="nofollow noopener noreferrer"></a>Setting PASETO Claims</h2>
+<p>The PASETO specification includes <a href="https://github.com/paseto-standard/paseto-spec/blob/master/docs/02-Implementation-Guide/04-Claims.md" rel="nofollow noopener noreferrer">seven reserved claims</a> which you can set with their explicit types:</p>
+<pre><code class="language-rust">// real-world example using the time crate to prevent the token from being used before 2
+// minutes from now
+let in_2_minutes = (time::OffsetDateTime::now_utc() + time::Duration::minutes(2)).format(&amp;Rfc3339)?;
+
+let token = PasetoBuilder::&lt;V4, Local&gt;::default()
+  //json payload key: "exp"
+  .set_claim(ExpirationClaim::try_from(in_5_minutes)?)
+  //json payload key: "iat"
+  // the IssueAtClaim is automatically set to UTC NOW by default
+  // but you can override it here
+  // .set_claim(IssuedAtClaim::try_from("2019-01-01T00:00:00+00:00")?)
+  //json payload key: "nbf"
+  //don't use this token before two minutes after UTC NOW
+  .set_claim(NotBeforeClaim::try_from(in_2_minutes)?)
+  //json payload key: "aud"
+  .set_claim(AudienceClaim::from("Cromulons"))
+  //json payload key: "sub"
+  .set_claim(SubjectClaim::from("Get schwifty"))
+  //json payload key: "iss"
+  .set_claim(IssuerClaim::from("Earth Cesium-137"))
+  //json payload key: "jti"
+  .set_claim(TokenIdentifierClaim::from("Planet Music - Season 988"))
+  .build(&amp;key)?;
+
+</code></pre>
+<h2><a href="#setting-your-own-custom-claims" id="user-content-setting-your-own-custom-claims" rel="nofollow noopener noreferrer"></a>Setting your own Custom Claims</h2>
+<p>The CustomClaim struct takes a tuple in the form of <code>(key: String, value: T)</code> where T is any
+serializable type</p>
+<h4><a href="#note-customclaims-use-the-tryfrom-trait-and-return-a-result-pasetoclaimerror-if-you-attempt-to-use-one-of-the-reserved-paseto-keys-in-your-customclaim" id="user-content-note-customclaims-use-the-tryfrom-trait-and-return-a-result-pasetoclaimerror-if-you-attempt-to-use-one-of-the-reserved-paseto-keys-in-your-customclaim" rel="nofollow noopener noreferrer"></a>Note: <em>CustomClaims use the TryFrom trait and return a Result&lt;(), PasetoClaimError&gt; if you attempt to use one of the <a href="https://github.com/paseto-standard/paseto-spec/blob/master/docs/02-Implementation-Guide/04-Claims.md" rel="nofollow noopener noreferrer">reserved PASETO keys</a> in your CustomClaim</em></h4>
+<pre><code class="language-rust">let token = PasetoBuilder::&lt;V4, Local&gt;::default()
+  .set_claim(CustomClaim::try_from(("Co-star", "Morty Smith"))?)
+  .set_claim(CustomClaim::try_from(("Universe", 137))?)
+  .build(&amp;key)?;
+
+</code></pre>
+<p>This throws an error:</p>
+<pre><code class="language-rust">// "exp" is a reserved PASETO claim key, you should use the ExpirationClaim type
+let token = PasetoBuilder::&lt;V4, Local&gt;::default()
+  .set_claim(CustomClaim::try_from(("exp", "Some expiration value"))?)
+  .build(&amp;key)?;
+
+</code></pre>
+<h1><a href="#validating-claims" id="user-content-validating-claims" rel="nofollow noopener noreferrer"></a>Validating claims</h1>
+<p>rusty_paseto allows for flexible claim validation at parse time</p>
+<h2><a href="#checking-claims" id="user-content-checking-claims" rel="nofollow noopener noreferrer"></a>Checking claims</h2>
+<p>Let's see how we can check particular claims exist with expected values.</p>
+<pre><code class="language-rust">// use a default token builder with the same PASETO version and purpose
+let token = PasetoBuilder::&lt;V4, Local&gt;::default()
+  .set_claim(SubjectClaim::from("Get schwifty"))
+  .set_claim(CustomClaim::try_from(("Contestant", "Earth"))?)
+  .set_claim(CustomClaim::try_from(("Universe", 137))?)
+  .build(&amp;key)?;
+
+PasetoParser::&lt;V4, Local&gt;::default()
+  // you can check any claim even custom claims
+  .check_claim(SubjectClaim::from("Get schwifty"))
+  .check_claim(CustomClaim::try_from(("Contestant", "Earth"))?)
+  .check_claim(CustomClaim::try_from(("Universe", 137))?)
+  .parse(&amp;token, &amp;key)?;
+
+// no need for the assertions below since the check_claim methods
+// above accomplish the same but at parse time!
+
+//assert_eq!(json_value["sub"], "Get schwifty");
+//assert_eq!(json_value["Contestant"], "Earth");
+//assert_eq!(json_value["Universe"], 137);
+</code></pre>
+<h1><a href="#custom-validation" id="user-content-custom-validation" rel="nofollow noopener noreferrer"></a>Custom validation</h1>
+<p>What if we have more complex validation requirements? You can pass in a reference to a closure which receives
+the key and value of the claim you want to validate so you can implement any validation logic
+you choose.</p>
+<p>Let's see how we can validate our tokens only contain universe values with prime numbers:</p>
+<pre><code class="language-rust">// use a default token builder with the same PASETO version and purpose
+let token = PasetoBuilder::&lt;V4, Local&gt;::default()
+  .set_claim(SubjectClaim::from("Get schwifty"))
+  .set_claim(CustomClaim::try_from(("Contestant", "Earth"))?)
+  .set_claim(CustomClaim::try_from(("Universe", 137))?)
+  .build(&amp;key)?;
+
+PasetoParser::&lt;V4, Local&gt;::default()
+  .check_claim(SubjectClaim::from("Get schwifty"))
+  .check_claim(CustomClaim::try_from(("Contestant", "Earth"))?)
+   .validate_claim(CustomClaim::try_from("Universe")?, &amp;|key, value| {
+     //let's get the value
+     let universe = value
+       .as_u64()
+       .ok_or(PasetoClaimError::Unexpected(key.to_string()))?;
+     // we only accept prime universes in this app
+     if primes::is_prime(universe) {
+       Ok(())
+     } else {
+       Err(PasetoClaimError::CustomValidation(key.to_string()))
+     }
+   })
+  .parse(&amp;token, &amp;key)?;
+
+</code></pre>
+<p>This token will fail to parse with the validation code above:</p>
+<pre><code class="language-rust">// 136 is not a prime number
+let token = PasetoBuilder::&lt;V4, Local&gt;::default()
+  .set_claim(CustomClaim::try_from(("Universe", 136))?)
+  .build(&amp;key)?;
+
+</code></pre>
+<h1><a href="#acknowledgments" id="user-content-acknowledgments" rel="nofollow noopener noreferrer"></a>Acknowledgments</h1>
+<p>If the API of this crate doesn't suit your tastes, check out the other PASETO implementations
+in the Rust ecosystem which inspired rusty_paseto:</p>
+<ul>
+<li><a href="https://crates.io/crates/paseto" rel="nofollow noopener noreferrer">paseto</a> - by <a href="https://crates.io/users/Mythra" rel="nofollow noopener noreferrer">Cynthia Coan</a></li>
+<li><a href="https://crates.io/crates/pasetors" rel="nofollow noopener noreferrer">pasetors</a> - by <a href="https://crates.io/users/brycx" rel="nofollow noopener noreferrer">Johannes</a></li>
+</ul>
+<h1><a href="#questions" id="user-content-questions" rel="nofollow noopener noreferrer"></a>Questions?</h1>
+<p>File an issue or hit me up on <a href="https://twitter.com/rrrodzilla" rel="nofollow noopener noreferrer">Twitter</a>!</p>

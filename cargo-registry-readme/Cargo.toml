@@ -1,0 +1,19 @@
+
+[package]
+name = "cargo-registry-readme"
+version = "0.1.0"
+edition = "2021"
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[dependencies]
+anyhow = "1.0.52"
+opener = "0.5.0"
+cargo-registry-readme-lib = { version = "0.1.0", path = "../cargo-registry-readme-lib" }
+clap = { version = "3.0.4", features = ["derive"] }
+tiny_http = { version = "0.9.0" }
+
