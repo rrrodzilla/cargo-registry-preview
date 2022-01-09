@@ -33,21 +33,19 @@ fn main() -> Result<()> {
     let port = listener.local_addr()?.port();
 
     let server = Server::from_listener(listener, None).unwrap();
-    println!("Preview readme 🦀🔎:");
-    println!("  📦crates.io: http://{}:{}", host, port);
+    println!("🦀 Server started!");
+    println!("📦 Preview at http://{}:{}", host, port);
+    println!("🔥 Hot reload enabled");
 
     //open the default browser if the user chooses
     if args.open {
+        println!("🌐 Opening browser");
         opener::open_browser(format!("http://{}:{}", host, port))?;
+    } else {
+        println!("❌ Opening browser (nope)");
     }
 
     for request in server.incoming_requests() {
-        println!(
-            "received request! url: {:?}",
-            //           request.method(),
-            request.url(),
-            //            request.headers()
-        );
         //handle the various requests
         match request.url() {
             //respond with the html page and inject the readme html
@@ -80,7 +78,7 @@ fn main() -> Result<()> {
                 )
                 .with_header("Content-Type: text/css".parse::<Header>().unwrap()),
             )?,
-            //respond with the downloads image file
+            //respond with Ferris B. Rustacean image file
             //sourced from Rustacean.net
             "/rustacean-flat-happy.png" => request.respond(
                 Response::from_data(
