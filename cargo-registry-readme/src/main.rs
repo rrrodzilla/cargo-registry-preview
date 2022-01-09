@@ -96,7 +96,7 @@ fn main() -> Result<()> {
                 )
                 .with_header("Content-Type: image/png".parse::<Header>().unwrap()),
             )?,
-            //respond with a required font
+            //respond with the crates.io favicon
             "/favicon.ico" => request.respond(
                 Response::from_data(
                     include_bytes!("../../wireframes/crates/src/favicon.ico").as_ref(),
@@ -142,8 +142,10 @@ fn main() -> Result<()> {
                 Response::from_string(include_str!("../../wireframes/crates/src/fira.css"))
                     .with_header("Content-Type: text/css".parse::<Header>().unwrap()),
             )?,
-            //else respond with a 404
-            _ => request.respond(Response::empty(404))?,
+            //else respond with a 308 to the index page
+            _ => request.respond(
+                Response::empty(308).with_header("Location: /".parse::<Header>().unwrap()),
+            )?,
         };
     }
 
