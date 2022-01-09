@@ -4,17 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/github.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
-    <!-- and it's easy to individually load additional languages -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/languages/rust.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/languages/ini.min.js"></script>
+    <link rel="stylesheet" href="github.min.css">
+    <script src="highlight.min.js"></script>
     <script>
         hljs.highlightAll();
     </script>
-    <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
+    <link rel="stylesheet" href="fira.css">
     <link href="output.css" rel="stylesheet">
-    <title>Crates.io mockup</title>
+    <title>Crates.io (local mockup)</title>
 </head>
 
 <body class="border-box flex flex-col min-h-screen leading-[1.15]">
@@ -98,12 +95,14 @@
                     <div class="flex grow"></div>
                     <button class="hidden lg:block text-[#383838] justify-end w-[150px] h-[48px] font-bold bg-gradient-to-b from-[#e8e3c7] to-[#d6cd99] rounded-full">Follow</button>
                 </div>
-                <div id="description_row" class="text-[#383838] mt-[15px] leading-[1.35]">Your well-written, incredibly useful crate.</div>
+                <div id="description_row" class="text-[#383838] mt-[15px] leading-[1.35]">Your well-written, incredibly useful crate. Nice work.</div>
                 <div id="keywords_row" class="mt-[10px] font-sans text-[#00ac5b]">
                     <span class="mr-[15px]"><span class="mr-[1px] text-[90%]">#</span>category
-                    1</span>
+                    1
+                    </span>
                     <span class="mr-[15px]"><span class="mr-[1px] text-[90%]">#</span>category
-                    2</span>
+                    2
+                    </span>
                 </div>
             </div>
             <!-- nav -->
@@ -118,7 +117,7 @@
             <!-- crate info -->
             <div class="border-box lg:grid lg:grid-cols-crate-info">
                 <!-- readme -->
-                <div class="border-box bg-white -mx-[15px] rounded-[5px] mb-0 justify-center text-[#383838]">
+                <div class="border-box bg-white lg:drop-shadow-md -mx-[15px] lg:mx-0 rounded-[5px] mb-0 justify-center text-[#383838]">
                     <article class="border-box block p-[25px]" aria-label="read me">
                         <div class="wrapper block flex-col break-words border-box">{}</div>
                     </article>
@@ -227,7 +226,8 @@
                 <!-- download graph -->
                 <div class="my-[30px]">
                     <h4>Downloads over the last 90 days</h4>
-                    <div class="h-[400px] w-full border-solid border-[1px] border-[#d5d3cb] rounded-sm flex justify-center items-center"><img src="downloads.png" class="w-[928px] h-[398px] object-cover" alt="Fake downloads graph" /></div>
+                    <div class="h-[400px] w-full border-solid border-[1px] border-[#d5d3cb] rounded-sm flex justify-center items-center"><img src="downloads.png" class="w-[928px] h-[398px] object-cover"
+                            alt="Fake downloads graph" /></div>
                 </div>
                 <!-- end download graph -->
             </div>
