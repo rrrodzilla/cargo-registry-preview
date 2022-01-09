@@ -66,6 +66,15 @@ fn main() -> Result<()> {
                 .with_header("Content-Type: text/css".parse::<Header>().unwrap()),
             )?,
             //respond with the downloads image file
+            //sourced from Rustacean.net
+            "/rustacean-flat-happy.png" => request.respond(
+                Response::from_data(
+                    include_bytes!("../../wireframes/crates/rustacean-flat-happy.png").as_ref(),
+                )
+                .with_header("Content-Type: image/png".parse::<Header>().unwrap()),
+            )?,
+            //respond with the downloads image file
+            //sourced from crates.io - rand crate (most downloaded all time)
             "/downloads.png" => request.respond(
                 Response::from_data(
                     include_bytes!("../../wireframes/crates/download.png").as_ref(),
@@ -73,6 +82,7 @@ fn main() -> Result<()> {
                 .with_header("Content-Type: image/png".parse::<Header>().unwrap()),
             )?,
             //respond with the logo file
+            //sourced from crates.io
             "/logo.png" => request.respond(
                 Response::from_data(include_bytes!("../../wireframes/crates/logo.png").as_ref())
                     .with_header("Content-Type: image/png".parse::<Header>().unwrap()),
