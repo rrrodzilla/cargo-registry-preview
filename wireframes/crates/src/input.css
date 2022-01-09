@@ -1,3 +1,54 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer base {
+    body {
+        @apply font-sans text-[#383838]
+    }
+    h3 {
+        @apply block text-[1.17em] my-[1em] font-bold
+    }
+}
+
+@layer components {
+    .wrapper {
+        @apply leading-normal break-words first:mt-0 last:mb-0;
+    }
+    .wrapper h1 {
+        @apply text-[2em] first:mt-0 my-[.67em] font-bold box-border;
+    }
+    .wrapper h2 {
+        @apply text-[1.5em] first:mt-0 my-[.83em] font-bold box-border;
+    }
+    .wrapper a {
+        @apply text-[#00ac5b]
+    }
+    .wrapper ul {
+        @apply block list-disc pl-[40px];
+    }
+    .wrapper img {
+        @apply max-w-full inline;
+    }
+    .wrapper pre code {
+        @apply block overflow-x-auto p-[1em] bg-[#f6f8fa] text-[85%] rounded-[6px];
+    }
+    .wrapper pre {
+        @apply my-[1em];
+    }
+    .wrapper p code {
+        @apply m-0 pt-[.2em] pr-[.4em] bg-[#f6f8fa] text-[85%] rounded-[6px]
+    }
+    .wrapper p {
+        @apply leading-normal break-words my-[1em] box-border;
+    }
+    code {
+        @apply font-mono text-[85%] rounded-[6px];
+    }
+    .wrapper table {
+        @apply border-collapse block overflow-x-auto
+    }
+    .wrapper table th,
+    td {
+        @apply border-solid border-[#dfe2e5] border pt-[6px] pr-[13px];
+    }
+}

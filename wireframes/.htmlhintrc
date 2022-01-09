@@ -1,0 +1,8 @@
+{
+    "attr-value-not-empty": true,
+    "doctype-html5": true,
+    "title-required": true,
+    "attr-no-duplicatoin": true,
+    "tags-check": true,
+    "tag-pair": true,
+}

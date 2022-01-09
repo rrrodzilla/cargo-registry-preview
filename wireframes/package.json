@@ -1,5 +1,7 @@
 {
   "devDependencies": {
+    "htmlhint": "^1.1.0",
+    "prettier": "2.5.1",
     "tailwindcss": "^3.0.10"
   },
   "dependencies": {

@@ -1,116 +1,246 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel='stylesheet' href='https://code.cdn.mozilla.net/fonts/fira.css'>
-  <link href="../dist/output.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <!-- and it's easy to individually load additional languages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/languages/rust.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/languages/ini.min.js"></script>
+    <script>
+        hljs.highlightAll();
+    </script>
+    <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
+    <link href="output.css" rel="stylesheet">
+    <title>Crates.io mockup</title>
 </head>
-<body>
-<header class="bg-white shadow">
-  <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
-    <div class="relative h-16 flex justify-between">
-      <div class="relative z-10 px-2 flex lg:px-0">
-        <div class="flex-shrink-0 flex items-center">
-          <img class="block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow">
-        </div>
-      </div>
-      <div class="relative z-0 flex-1 px-2 flex items-center justify-center sm:absolute sm:inset-0">
-        <div class="w-full sm:max-w-xs">
-          <label for="search" class="sr-only">Search</label>
-          <div class="relative">
-            <div class="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
-              <!-- Heroicon name: solid/search -->
-              <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+
+<body class="border-box flex flex-col min-h-screen leading-[1.15]">
+    <header class="flex bg-[#3b6837] shadow  lg:max-h-min h-[80px]">
+        <div class="flex relative h-full flex-row grow justify-between items-center max-w-[960px] w-[960px] mx-auto px-[20px] py-[10px]">
+            <div class="relative lg:h-16 flex flex-col lg:flex-row grow justify-between">
+                <div class="relative z-10 flex place-items-center">
+                    <img class="block h-13 lg:-mx-3 lg:mr-3 w-auto" src="logo.png" alt="crates.io logo"
+                    />
+                    <div class="lg:-ml-1 text-white text-logo font-bold font-sans -mt-[.15rem]">
+                        crates.io
+                    </div>
+                </div>
+                <div class="relative z-0 flex-1 px-2 flex grow lg:ml-2 lg:-mr-2 lg:items-center justify-start">
+                    <div class="flex grow bg-[#ffc933] m-0 p-0 rounded-full">
+                        <label for="search" class="sr-only">Search</label>
+                        <div class="flex grow">
+                            <input name="search" class="flex lg:hidden grow justify-start bg-white h-7 rounded-tl-full rounded-bl-full border border-none py-2 pl-2 pr-3 text-sm sm:text-sm"
+                                placeholder="Search" type="search">
+                            <input name="search" class="hidden lg:block flex grow justify-start bg-white h-[1.6rem] rounded-tl-full rounded-bl-full border border-none py-2 pl-2 text-sm  sm:text-sm"
+                                placeholder="Click or press 'S' to search..." type="search">
+                            <div class="pointer-events-none pl-1.5 pr-2 flex items-center">
+                                <!-- Heroicon name: solid/search -->
+                                <svg class="h-5 w-5 text-white font-bold" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                    fill="currentColor" aria-hidden="true">
                 <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
               </svg>
-            </div>
-            <input id="search" name="search" class="block w-full bg-white border border-gray-300 rounded-md py-2 pl-10 pr-3 text-sm placeholder-gray-500 focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Search" type="search">
-          </div>
-        </div>
-      </div>
-      <div class="relative z-10 flex items-center lg:hidden">
-        <!-- Mobile menu button -->
-        <button type="button" class="rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden relative z-10 flex items-center lg:hidden">
+                    <!-- Mobile menu button -->
+                    <button type="button" class="rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                        aria-controls="mobile-menu" aria-expanded="false">
           <span class="sr-only">Open menu</span>
-          <!--
-            Icon when menu is closed.
-
-            Heroicon name: outline/menu
-
-            Menu open: "hidden", Menu closed: "block"
-          -->
-          <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+         <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
-          <!--
-            Icon when menu is open.
-
-            Heroicon name: outline/x
-
-            Menu open: "block", Menu closed: "hidden"
-          -->
-          <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      </div>
-      <div class="hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center">
-        <button type="button" class="flex-shrink-0 bg-white rounded-full p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          <span class="sr-only">View notifications</span>
-          <!-- Heroicon name: outline/bell -->
-          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-          </svg>
-        </button>
-
-        <!-- Profile dropdown -->
-        <div class="flex-shrink-0 relative ml-4">
-          <div>
-            <button type="button" class="bg-white rounded-full flex focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+       </button>
+                </div>
+                <div class="hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center text-white text-base">
+                    Browse All Crates <span class="text-[#284725]">&nbsp;&nbsp;|</span>
+                    <!-- Profile dropdown -->
+                    <div class="flex-shrink-0 relative ml-3">
+                        <div>
+                            <button type="button" class="bg-white rounded-sm flex focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                id="user-menu-button" aria-expanded="false" aria-haspopup="true">
               <span class="sr-only">Open user menu</span>
-              <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+              <img class="h-6 w-6 rounded-sm" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
             </button>
-          </div>
+                        </div>
 
-          <!--
-            Dropdown menu, show/hide based on menu state.
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="ml-3 -mr-3 h-3 w-3" viewBox="0 0 20 20"
+                        fill="currentColor">
+  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+</svg>
+                </div>
+            </div>
 
-            Entering: "transition ease-out duration-100"
-              From: "transform opacity-0 scale-95"
-              To: "transform opacity-100 scale-100"
-            Leaving: "transition ease-in duration-75"
-              From: "transform opacity-100 scale-100"
-              To: "transform opacity-0 scale-95"
-          -->
+            <!-- Mobile menu, show/hide based on menu state. -->
+    </header>
+
+    <!-- main -->
+    <div class="bg-[#f9f7ec] flex grow justify-center">
+        <!-- inner main -->
+        <div class="border-box w-[960px] max-w-[960px] flex flex-col my-[15px] px-[15px]">
+            <!-- header -->
+            <div class="bg-[#edebdd] p-[20px] mb-[20px] rounded-[5px] flex flex-col place-content-center">
+                <div id="header_row" class="flex flex-row justify-between">
+                    <div class="flex flex-row items-center">
+                        <div class="flex mr-[10px]">
+                            <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
+                                class="_crate-icon_8qtlic"><path d="M16 32.107c8.837 0 16-7.164 16-16 0-8.837-7.163-16-16-16s-16 7.163-16 16c0 8.836 7.163 16 16 16z" fill="#FFF"></path><path d="M20.247 12.548L16 10l-4.224 2.535 4.247 2.452 4.224-2.439zM21 14.423l-4 2.31V21.4l4-2.4v-4.577zm-10-.027V19l4 2.4v-4.695l-4-2.309zM16 8l7 4v8l-7 4-7-4v-8l7-4z" fill="#B13B89"></path></svg>
+                        </div>
+                        <h1 class="m-0 p-0 break-words text-[2em] font-bold">your_crate</h1>
+                        <div class="flex text-[#858585] font-bold text-2xl ml-[10px]">0.1.0</div>
+                    </div>
+
+                    <div class="flex grow"></div>
+                    <button class="hidden lg:block text-[#383838] justify-end w-[150px] h-[48px] font-bold bg-gradient-to-b from-[#e8e3c7] to-[#d6cd99] rounded-full">Follow</button>
+                </div>
+                <div id="description_row" class="text-[#383838] mt-[15px] leading-[1.35]">Your well-written, incredibly useful crate.</div>
+                <div id="keywords_row" class="mt-[10px] font-sans text-[#00ac5b]">
+                    <span class="mr-[15px]"><span class="mr-[1px] text-[90%]">#</span>category 1</span>
+                    <span class="mr-[15px]"><span class="mr-[1px] text-[90%]">#</span>category 2</span>
+                </div>
+            </div>
+            <!-- nav -->
+            <nav class="mb-[20px]" aria-label="non-clickable crate subpages">
+                <ul class="flex border-b-[#d5d3cb] border-b-solid border-b-2">
+                    <li class="bg-[#edebdd] px-[20px] py-[12px] rounded-t-[5px] border-b-[#007940] border-b-solid border-b-2 -mb-[2px]">Readme</li>
+                    <li class="px-[20px] py-[12px] rounded-[5px]">100 Versions</li>
+                    <li class="px-[20px] py-[12px] rounded-[5px]">Dependencies</li>
+                    <li class="px-[20px] py-[12px] rounded-[5px]">Dependents</li>
+                </ul>
+            </nav>
+            <!-- crate info -->
+            <div class="border-box grid grid-cols-crate-info">
+                <!-- readme -->
+                <div class="border-box bg-white rounded-[5px] mb-0 justify-center text-[#383838]">
+                    <article class="border-box block p-[25px]" aria-label="read me">
+                        <div class="wrapper block flex-col break-words border-box">{}</div>
+                    </article>
+                </div>
+
+                <!-- sidebar -->
+
+                <section class="block w-[260px] mt-[20px] ml-[20px]" aria-label="Fake crate metadata">
+                    <div class="flex flex-col">
+                        <div>
+                            <h3>Metadata</h3>
+                            <div class="block flex-1">
+                                <div class="mb-[10px] flex items-center"><svg class="h-4 w-auto" xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor" viewBox="0 0 100 100" width="100"
+                                        height="100"><!--! Font Awesome Free 5.15.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)--><path d="M35.156 56.25h-7.812A2.35 2.35 0 0125 53.906v-7.812a2.35 2.35 0 012.344-2.344h7.812a2.35 2.35 0 012.344 2.344v7.812a2.35 2.35 0 01-2.344 2.344zm21.094-2.344v-7.812a2.35 2.35 0 00-2.344-2.344h-7.812a2.35 2.35 0 00-2.344 2.344v7.812a2.35 2.35 0 002.344 2.344h7.812a2.35 2.35 0 002.344-2.344zm18.75 0v-7.812a2.35 2.35 0 00-2.344-2.344h-7.812a2.35 2.35 0 00-2.344 2.344v7.812a2.35 2.35 0 002.344 2.344h7.812A2.35 2.35 0 0075 53.906zm-18.75 18.75v-7.812a2.35 2.35 0 00-2.344-2.344h-7.812a2.35 2.35 0 00-2.344 2.344v7.812A2.35 2.35 0 0046.094 75h7.812a2.35 2.35 0 002.344-2.344zm-18.75 0v-7.812a2.35 2.35 0 00-2.344-2.344h-7.812A2.35 2.35 0 0025 64.844v7.812A2.35 2.35 0 0027.344 75h7.812a2.35 2.35 0 002.344-2.344zm37.5 0v-7.812a2.35 2.35 0 00-2.344-2.344h-7.812a2.35 2.35 0 00-2.344 2.344v7.812A2.35 2.35 0 0064.844 75h7.812A2.35 2.35 0 0075 72.656zm18.75-50.781v68.75c0 5.176-4.2 9.375-9.375 9.375h-68.75c-5.176 0-9.375-4.2-9.375-9.375v-68.75c0-5.176 4.2-9.375 9.375-9.375H25V2.344A2.35 2.35 0 0127.344 0h7.812A2.35 2.35 0 0137.5 2.344V12.5h25V2.344A2.35 2.35 0 0164.844 0h7.812A2.35 2.35 0 0175 2.344V12.5h9.375c5.176 0 9.375 4.2 9.375 9.375zm-9.375 67.578V31.25h-68.75v58.203c0 .645.527 1.172 1.172 1.172h66.406c.645 0 1.172-.527 1.172-1.172z"></path></svg>
+                                    <div class="ml-[7px]">1 second ago</div>
+                                </div>
+                                <div class="mb-[10px] flex items-center"><svg class="h-4 w-auto" xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor" viewBox="0 0 100 100" width="100"
+                                        height="100"><!--! Font Awesome Free 5.15.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)--><path d="M40 62.5h-.003c0-2.528.21-1.364-13.29-28.36-2.757-5.515-10.654-5.526-13.416 0C-.322 61.366.003 60.051.003 62.5H0C0 69.403 8.955 75 20 75s20-5.597 20-12.5zm-20-25L31.25 60H8.75zm79.997 25c0-2.528.21-1.364-13.29-28.36-2.757-5.515-10.654-5.526-13.416 0C59.678 61.366 60.003 60.051 60.003 62.5H60C60 69.403 68.955 75 80 75s20-5.597 20-12.5zM68.75 60L80 37.5 91.25 60zM82.5 80H55V33.945c3.673-1.608 6.431-4.918 7.248-8.945H82.5a2.5 2.5 0 002.5-2.5v-5a2.5 2.5 0 00-2.5-2.5H59.944c-2.282-3.019-5.867-5-9.944-5-4.077 0-7.662 1.981-9.944 5H17.5a2.5 2.5 0 00-2.5 2.5v5a2.5 2.5 0 002.5 2.5h20.252c.817 4.025 3.573 7.337 7.248 8.945V80H17.5a2.5 2.5 0 00-2.5 2.5v5a2.5 2.5 0 002.5 2.5h65a2.5 2.5 0 002.5-2.5v-5a2.5 2.5 0 00-2.5-2.5z"></path></svg>
+                                    <div class="ml-[7px]">MIT or Apache-2.0</div>
+                                </div>
+                                <div class="mb-[10px] flex items-center"><svg class="h-4 w-auto" xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor" viewBox="0 0 100 100" width="100"
+                                        height="100"><!--! Font Awesome Free 5.15.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)--><path d="M50.002 0c-10.356 0-18.75 8.394-18.75 18.75 0 2.203.45 4.287 1.148 6.25H20.633c-2.819 0-5.29 2.059-6.03 5.023L.337 87.082C-1.291 93.588 3.199 100 9.38 100h81.24c6.18 0 10.67-6.412 9.043-12.918L85.4 30.023C84.658 27.057 82.19 25 79.371 25H67.604c.697-1.963 1.148-4.047 1.148-6.25C68.752 8.394 60.357 0 50.002 0zM50 12.498a6.258 6.258 0 016.25 6.25 6.258 6.258 0 01-6.25 6.25 6.258 6.258 0 01-6.25-6.25 6.258 6.258 0 016.25-6.25zM23.908 34.793h52.41l13.693 54.809H10.279z"></path></svg>
+                                    <div class="ml-[7px]">100 kB (not real)</div>
+                                </div>
+                            </div>
+                            <div>
+                                <h3>Install</h3>
+                                <p class="text-xs mb-[1em]">Add the following line to your Cargo.toml file:</p>
+                                <button class="border-[#d5d3cb] border-solid border-2 rounded-[5px] py-[7px] px-[12px] flex w-full font-mono">your_crate = "0.1.0"</button>
+                            </div>
+                            <div>
+                                <div>
+                                    <h3>Homepage</h3>
+                                    <div class="flex items-center mb-[10px]">
+                                        <div><svg class="h-4 w-auto" xmlns="http://www.w3.org/2000/svg"
+                                                width="100" height="100" viewBox="0 0 24 24"
+                                                fill="currentColor"><path d="M10.17 13.83a1.264 1.264 0 010 1.844 1.309 1.309 0 01-1.844 0 6.496 6.496 0 010-9.179l4.596-4.596a6.496 6.496 0 019.18 0 6.496 6.496 0 010 9.18l-1.935 1.934a8.969 8.969 0 00-.52-3.142l.61-.624a3.871 3.871 0 000-5.505 3.871 3.871 0 00-5.504 0l-4.584 4.584a3.871 3.871 0 000 5.505m3.662-5.505a1.309 1.309 0 011.843 0 6.496 6.496 0 010 9.179l-4.596 4.596a6.496 6.496 0 01-9.18 0 6.496 6.496 0 010-9.18l1.935-1.934a9.09 9.09 0 00.52 3.155l-.61.61a3.871 3.871 0 000 5.506 3.871 3.871 0 005.504 0l4.584-4.584a3.871 3.871 0 000-5.505 1.264 1.264 0 010-1.843z"></path></svg></div>
+                                        <div class="ml-[7px] text-[#00ac5b]">your_crate/homepage</div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3>Documentation</h3>
+                                    <div class="flex items-center mb-[10px]">
+                                        <div><svg class="h-4 w-auto" xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 512 512" width="512" height="512"
+                                                fill="currentColor"><path d="M488.6 250.2L392 214V105.5c0-15-9.3-28.4-23.4-33.7l-100-37.5c-8.1-3.1-17.1-3.1-25.3 0l-100 37.5c-14.1 5.3-23.4 18.7-23.4 33.7V214l-96.6 36.2C9.3 255.5 0 268.9 0 283.9V394c0 13.6 7.7 26.1 19.9 32.2l100 50c10.1 5.1 22.1 5.1 32.2 0l103.9-52 103.9 52c10.1 5.1 22.1 5.1 32.2 0l100-50c12.2-6.1 19.9-18.6 19.9-32.2V283.9c0-15-9.3-28.4-23.4-33.7zM358 214.8l-85 31.9v-68.2l85-37v73.3zM154 104.1l102-38.2 102 38.2v.6l-102 41.4-102-41.4v-.6zm84 291.1l-85 42.5v-79.1l85-38.8v75.4zm0-112l-102 41.4-102-41.4v-.6l102-38.2 102 38.2v.6zm240 112l-85 42.5v-79.1l85-38.8v75.4zm0-112l-102 41.4-102-41.4v-.6l102-38.2 102 38.2v.6z"></path></svg></div>
+                                        <div class="ml-[7px] text-[#00ac5b]">docs.rs/your_crate</div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3>Repository</h3>
+                                    <div class="flex items-center mb-[10px]">
+                                        <div>
+                                            <svg class="h-4 w-auto" height="512" width="512" viewBox="0 0 512 512" fill="currentColor"
+                                                xmlns="http://www.w3.org/2000/svg"><path d="M256 0C114.61 0 0 114.61 0 256c0 113.1 73.345 209.05 175.07 242.91 12.81 2.35 17.48-5.56 17.48-12.35 0-6.06-.22-22.17-.35-43.53-71.21 15.46-86.23-34.32-86.23-34.32-11.645-29.58-28.429-37.45-28.429-37.45-23.244-15.88 1.76-15.56 1.76-15.56 25.699 1.8 39.209 26.38 39.209 26.38 22.84 39.12 59.92 27.82 74.51 21.27 2.32-16.54 8.93-27.82 16.25-34.22-56.84-6.45-116.611-28.43-116.611-126.52 0-27.94 9.981-50.8 26.351-68.7-2.64-6.47-11.42-32.5 2.5-67.74 0 0 21.5-6.889 70.41 26.24 20.41-5.69 42.32-8.52 64.09-8.61 21.73.1 43.64 2.92 64.09 8.61 48.87-33.129 70.32-26.24 70.32-26.24 13.97 35.24 5.19 61.27 2.55 67.74 16.41 17.9 26.32 40.76 26.32 68.7 0 98.35-59.86 119.99-116.89 126.32 9.19 7.91 17.38 23.53 17.38 47.41 0 34.22-.31 61.83-.31 70.22 0 6.85 4.6 14.82 17.6 12.32C438.72 464.96 512 369.08 512 256 512 114.61 397.37 0 255.98 0"></path></svg>                                            </div>
+                                        <div class="ml-[7px] text-[#00ac5b]">github.com/ferris_rustacean/your_crate</div>
+                                    </div>
+                                    <div>
+                                        <h3>Owners</h3>
+                                        <div class="flex items-center mb-[10px]">
+                                            <div> <img class="h-[32px] w-[32px] rounded-sm"
+                                                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                                    alt="">
+                                            </div>
+                                            <div class="ml-[7px] text-[#00ac5b]">Ferris B. Rustacean</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3>Categories</h3>
+                                    <div class="flex items-center mb-[10px]">
+                                        <ul class="list-disc pl-[20px]">
+                                            <li class="my-4 "><span class="text-[#00ac5b]">mock CLI tools</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div><button class="w-[220px] mt-[20px] font-bold bg-gradient-to-b from-[#fede9e] to-[#fdc452] text-[#383838] rounded-full px-[20px] py-[10px]">Try on Rust Playground</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- downloads -->
+            <div class="flex flex-col w-full border-solid mt-[25px] border-[#d5d3cb] border-t-[5px]">
+                <h3>Stats Overview</h3>
+                <div class="flex">
+                    <div class="flex flex-col grow px-[20px] py-[20px] border=[#d5d3cb] border-solid border-l-[1px]">
+                        <div class="flex">
+                            <svg width="32" height="33" viewBox="0 0 32 33" xmlns="http://www.w3.org/2000/svg"><circle fill="#FFF" cx="16" cy="16" r="16"></circle><path fill="#B13B89" d="M10 21h12v2H10zM14 10h4v5h3l-5 4.996L11 15h3z"></path></svg>
+                            <div class="text-[160%] font-[700] text-[#383838]">999,999,999</div>
+                        </div>
+                        <div class="text-[80%] text-[#858585]">Downloads all time</div>
+                    </div>
+                    <div class="flex flex-col grow px-[20px] py-[20px] border=[#d5d3cb] border-solid border-l-[1px]">
+                        <div class="flex">
+                            <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 32.107c8.837 0 16-7.164 16-16 0-8.837-7.163-16-16-16s-16 7.163-16 16c0 8.836 7.163 16 16 16z" fill="#FFF"></path><path d="M20.247 12.548L16 10l-4.224 2.535 4.247 2.452 4.224-2.439zM21 14.423l-4 2.31V21.4l4-2.4v-4.577zm-10-.027V19l4 2.4v-4.695l-4-2.309zM16 8l7 4v8l-7 4-7-4v-8l7-4z" fill="#B13B89"></path></svg>
+                            <div class="text-[160%] font-[700] text-[#383838]">100</div>
+
+                        </div>
+                        <div class="text-[80%] text-[#858585]">Versions published</div>
+                    </div>
+                </div>
+                <!-- download graph -->
+                <div class="my-[30px]">
+                    <h4>Downloads over the last 90 days</h4>
+                    <div class="h-[400px] w-full border-solid border-[1px] border-[#d5d3cb] rounded-sm flex justify-center items-center">Download graph</div>
+                </div>
+                <!-- end download graph -->
+            </div>
+
+            <!-- end downloads -->
+
+            <!-- end readme content area -->
         </div>
-      </div>
     </div>
-  </div>
+    <!-- footer -->
+    <div class="w-full bg-[#3b6837] h-[283px]">
 
-  <!-- Mobile menu, show/hide based on menu state. -->
-  <nav class="lg:hidden" aria-label="Global" id="mobile-menu">
-    <div class="border-t border-gray-200 pt-4 pb-3">
-      <div class="px-4 flex items-center">
-        <div class="flex-shrink-0">
-          <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-        </div>
-        <div class="ml-3">
-          <div class="text-base font-medium text-gray-800">Tom Cook</div>
-          <div class="text-sm font-medium text-gray-500">tom@example.com</div>
-        </div>
-        <button type="button" class="ml-auto flex-shrink-0 bg-white rounded-full p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          <span class="sr-only">View notifications</span>
-          <!-- Heroicon name: outline/bell -->
-          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-          </svg>
-        </button>
-      </div>
     </div>
-  </nav>
-</header>
- 
+
+    <!-- end footer -->
 </body>
-</html>
 
+</html>
