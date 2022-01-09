@@ -18,7 +18,7 @@
 </head>
 
 <body class="border-box flex flex-col min-h-screen leading-[1.15]">
-    <header class="flex bg-[#3b6837] shadow  lg:max-h-min h-[80px]">
+    <header class="flex bg-[#3b6837] shadow  lg:max-h-min h-[130px] lg:h-[80px]">
         <div class="flex relative h-full flex-row grow justify-between items-center max-w-[960px] w-[960px] mx-auto px-[20px] py-[10px]">
             <div class="relative lg:h-16 flex flex-col lg:flex-row grow justify-between">
                 <div class="relative z-10 flex place-items-center">
@@ -28,7 +28,7 @@
                         crates.io
                     </div>
                 </div>
-                <div class="relative z-0 flex-1 px-2 flex grow lg:ml-2 lg:-mr-2 lg:items-center justify-start">
+                <div class="relative z-0 flex-1 py-[10px] lg:py-0 px-2 flex grow lg:ml-2 lg:-mr-2 lg:items-center justify-start">
                     <div class="flex grow bg-[#ffc933] m-0 p-0 rounded-full">
                         <label for="search" class="sr-only">Search</label>
                         <div class="flex grow">
@@ -82,7 +82,7 @@
     <!-- main -->
     <div class="bg-[#f9f7ec] flex grow justify-center">
         <!-- inner main -->
-        <div class="border-box w-[960px] max-w-[960px] flex flex-col my-[15px] px-[15px]">
+        <div class="border-box w-full lg:w-[960px] lg:max-w-[960px] flex flex-col my-[15px] px-[15px]">
             <!-- header -->
             <div class="bg-[#edebdd] p-[20px] mb-[20px] rounded-[5px] flex flex-col place-content-center">
                 <div id="header_row" class="flex flex-row justify-between">
@@ -100,13 +100,15 @@
                 </div>
                 <div id="description_row" class="text-[#383838] mt-[15px] leading-[1.35]">Your well-written, incredibly useful crate.</div>
                 <div id="keywords_row" class="mt-[10px] font-sans text-[#00ac5b]">
-                    <span class="mr-[15px]"><span class="mr-[1px] text-[90%]">#</span>category 1</span>
-                    <span class="mr-[15px]"><span class="mr-[1px] text-[90%]">#</span>category 2</span>
+                    <span class="mr-[15px]"><span class="mr-[1px] text-[90%]">#</span>category
+                    1</span>
+                    <span class="mr-[15px]"><span class="mr-[1px] text-[90%]">#</span>category
+                    2</span>
                 </div>
             </div>
             <!-- nav -->
             <nav class="mb-[20px]" aria-label="non-clickable crate subpages">
-                <ul class="flex border-b-[#d5d3cb] border-b-solid border-b-2">
+                <ul class="flex flex-col lg:flex-row border-b-[#d5d3cb] border-b-solid border-b-2">
                     <li class="bg-[#edebdd] px-[20px] py-[12px] rounded-t-[5px] border-b-[#007940] border-b-solid border-b-2 -mb-[2px]">Readme</li>
                     <li class="px-[20px] py-[12px] rounded-[5px]">100 Versions</li>
                     <li class="px-[20px] py-[12px] rounded-[5px]">Dependencies</li>
@@ -114,9 +116,9 @@
                 </ul>
             </nav>
             <!-- crate info -->
-            <div class="border-box grid grid-cols-crate-info">
+            <div class="border-box lg:grid lg:grid-cols-crate-info">
                 <!-- readme -->
-                <div class="border-box bg-white rounded-[5px] mb-0 justify-center text-[#383838]">
+                <div class="border-box bg-white -mx-[15px] rounded-[5px] mb-0 justify-center text-[#383838]">
                     <article class="border-box block p-[25px]" aria-label="read me">
                         <div class="wrapper block flex-col break-words border-box">{}</div>
                     </article>
@@ -175,7 +177,7 @@
                                         <div>
                                             <svg class="h-4 w-auto" height="512" width="512" viewBox="0 0 512 512" fill="currentColor"
                                                 xmlns="http://www.w3.org/2000/svg"><path d="M256 0C114.61 0 0 114.61 0 256c0 113.1 73.345 209.05 175.07 242.91 12.81 2.35 17.48-5.56 17.48-12.35 0-6.06-.22-22.17-.35-43.53-71.21 15.46-86.23-34.32-86.23-34.32-11.645-29.58-28.429-37.45-28.429-37.45-23.244-15.88 1.76-15.56 1.76-15.56 25.699 1.8 39.209 26.38 39.209 26.38 22.84 39.12 59.92 27.82 74.51 21.27 2.32-16.54 8.93-27.82 16.25-34.22-56.84-6.45-116.611-28.43-116.611-126.52 0-27.94 9.981-50.8 26.351-68.7-2.64-6.47-11.42-32.5 2.5-67.74 0 0 21.5-6.889 70.41 26.24 20.41-5.69 42.32-8.52 64.09-8.61 21.73.1 43.64 2.92 64.09 8.61 48.87-33.129 70.32-26.24 70.32-26.24 13.97 35.24 5.19 61.27 2.55 67.74 16.41 17.9 26.32 40.76 26.32 68.7 0 98.35-59.86 119.99-116.89 126.32 9.19 7.91 17.38 23.53 17.38 47.41 0 34.22-.31 61.83-.31 70.22 0 6.85 4.6 14.82 17.6 12.32C438.72 464.96 512 369.08 512 256 512 114.61 397.37 0 255.98 0"></path></svg>                                            </div>
-                                        <div class="ml-[7px] text-[#00ac5b]">github.com/ferris_rustacean/your_crate</div>
+                                        <div class="ml-[7px] truncate text-[#00ac5b]">github.com/ferris_rustacean/your_crate</div>
                                     </div>
                                     <div>
                                         <h3>Owners</h3>
@@ -209,7 +211,7 @@
                     <div class="flex flex-col grow px-[20px] py-[20px] border=[#d5d3cb] border-solid border-l-[1px]">
                         <div class="flex">
                             <svg width="32" height="33" viewBox="0 0 32 33" xmlns="http://www.w3.org/2000/svg"><circle fill="#FFF" cx="16" cy="16" r="16"></circle><path fill="#B13B89" d="M10 21h12v2H10zM14 10h4v5h3l-5 4.996L11 15h3z"></path></svg>
-                            <div class="text-[160%] font-[700] text-[#383838]">999,999,999</div>
+                            <div class="text-[160%] font-[700] text-[#383838]">1,000,000</div>
                         </div>
                         <div class="text-[80%] text-[#858585]">Downloads all time</div>
                     </div>
@@ -225,7 +227,7 @@
                 <!-- download graph -->
                 <div class="my-[30px]">
                     <h4>Downloads over the last 90 days</h4>
-                    <div class="h-[400px] w-full border-solid border-[1px] border-[#d5d3cb] rounded-sm flex justify-center items-center">Download graph</div>
+                    <div class="h-[400px] w-full border-solid border-[1px] border-[#d5d3cb] rounded-sm flex justify-center items-center"><img src="downloads.png" class="w-[928px] h-[398px] object-cover" alt="Fake downloads graph" /></div>
                 </div>
                 <!-- end download graph -->
             </div>

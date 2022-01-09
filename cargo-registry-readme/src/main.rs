@@ -65,6 +65,13 @@ fn main() -> Result<()> {
                 )
                 .with_header("Content-Type: text/css".parse::<Header>().unwrap()),
             )?,
+            //respond with the downloads image file
+            "/downloads.png" => request.respond(
+                Response::from_data(
+                    include_bytes!("../../wireframes/crates/download.png").as_ref(),
+                )
+                .with_header("Content-Type: image/png".parse::<Header>().unwrap()),
+            )?,
             //respond with the logo file
             "/logo.png" => request.respond(
                 Response::from_data(include_bytes!("../../wireframes/crates/logo.png").as_ref())
