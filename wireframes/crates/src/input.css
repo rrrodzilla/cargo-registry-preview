@@ -3,12 +3,10 @@
 @tailwind utilities;
 @layer base {
     body {
-        @apply font-sans text-[#383838]
+        @apply font-sans text-[#383838];
     }
-    h3 {
-        @apply block text-[1.17em] my-[1em] font-bold
-    }
-}
+    hr { border-style: inset; }
+ }
 
 @layer components {
     .wrapper {
@@ -20,11 +18,32 @@
     .wrapper h2 {
         @apply text-[1.5em] first:mt-0 my-[.83em] font-bold box-border;
     }
+    .wrapper h3 {
+        @apply block text-[1.17em] my-[1em] font-bold;
+    }
+    .wrapper h4 {
+        @apply block font-bold box-border;
+    }
+    .wrapper h5 {
+        @apply text-[.83em] my-[1.67em] font-bold;
+    }
+    .wrapper h6 {
+        @apply text-[.67em] my-[2.33em] font-bold;
+    }
+    .wrapper blockquote {
+        @apply my-[1em] mx-[40px];
+    }
     .wrapper a {
-        @apply text-[#00ac5b]
+        @apply text-[#00ac5b];
     }
     .wrapper ul {
-        @apply block list-disc pl-[40px];
+        @apply block list-disc my-[1em] pl-[40px];
+    }
+    .wrapper ol {
+        @apply block list-decimal my-[1em] pl-[40px];
+    }
+    .wrapper hr {
+        @apply block h-0 my-[0.5em] box-border;
     }
     .wrapper img {
         @apply max-w-full inline;
@@ -36,7 +55,7 @@
         @apply my-[1em];
     }
     .wrapper p code {
-        @apply m-0 pt-[.2em] pr-[.4em] bg-[#f6f8fa] text-[85%] rounded-[6px]
+        @apply m-0 pt-[.2em] pr-[.4em] bg-[#f6f8fa] text-[85%] rounded-[6px];
     }
     .wrapper p {
         @apply leading-normal break-words my-[1em] box-border;
@@ -45,7 +64,7 @@
         @apply font-mono text-[85%] rounded-[6px];
     }
     .wrapper table {
-        @apply border-collapse block overflow-x-auto
+        @apply border-collapse block overflow-x-auto;
     }
     .wrapper table th,
     td {

@@ -1,5 +1,5 @@
 [workspace]
-members = ["cargo-registry-readme", "cargo-registry-readme-lib"]
+members = ["cargo-registry-readme"]
 
 [profile.release]
 opt-level = "z"

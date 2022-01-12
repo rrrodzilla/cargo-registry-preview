@@ -14,6 +14,9 @@ module.exports = {
                 '80': '80px',
                 '13': '3.35rem',
             },
+            borderStyle: {
+                'inset': 'inset',
+            },
             fontSize: {
                 'logo': '24px',
             },
