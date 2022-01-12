@@ -93,23 +93,10 @@ fn spawn_websockets(request: Request, stream: Arc<Mutex<WsStream>>) -> Result<()
     Ok(())
 }
 
-//  #[derive(Parser, Debug)]
-//  #[clap(about, version, author)]
-//  struct Args {
-//      /// 📄 Readme file (e.g. - "./readme.md")
-//      #[clap()]
-//      readme: String,
-//      /// 🚢 The preview server port (defaults to any available)
-//      #[clap(short, long, default_value_t = 0)]
-//      port: u16,
-//      #[clap(short, long)]
-//      /// 🌐 Automatically open the preview in your default browser
-//      open: bool,
-//  }
-
 fn main() -> Result<()> {
     let mut modification_count = 0;
     let running = Arc::new(AtomicBool::new(true));
+
     let args = App::new("cargo-markdown")
         .version("0.1")
         .bin_name("cargo")
@@ -128,14 +115,15 @@ fn main() -> Result<()> {
     before publishing to staging.crates.io or crates.io
 
 {}
-    cargo markdown [OPTIONS] <README> [PORT]
+    cargo markdown [OPTIONS] <README> 
 
 {}
     {}    📄 The path to your readme file
-    {}      🚢 The port used by the preview server [default: 8080]
 
 {}
     {}❔ Print help information
+    {}🚢 The port used by the preview server [default: 8080]
+    {}🏨 The hostname used by the hot-reload server [default: 127.0.0.1]
     {}🌐 Automagically open your browser on startup [default: false]
     {}🎬 Print version information
 
@@ -146,9 +134,10 @@ fn main() -> Result<()> {
                         style("USAGE:").fg(Color::Color256(3)),
                         style("ARGS:").fg(Color::Color256(3)),
                         style("<README>").fg(Color::Color256(2)),
-                        style("<PORT>").fg(Color::Color256(2)),
                         style("OPTIONS:").fg(Color::Color256(3)),
                         style("-h, --help           ").fg(Color::Color256(2)),
+                        style("-p, --port <PORT>    ").fg(Color::Color256(2)),
+                        style("--host <HOSTNAME>    ").fg(Color::Color256(2)),
                         style("-o, --open <open>    ").fg(Color::Color256(2)),
                         style("-V, --version        ").fg(Color::Color256(2)),
                         style("LIKE THIS TOOL?").fg(Color::Color256(3)),
@@ -162,7 +151,13 @@ fn main() -> Result<()> {
                     .as_str(),
                 )
                 .arg(Arg::new("README").required(true))
-                .arg(Arg::new("PORT").default_value("8080"))
+                .arg(Arg::new("HOSTNAME").default_value("127.0.0.1").long("host"))
+                .arg(
+                    Arg::new("PORT")
+                        .default_value("8080")
+                        .short('p')
+                        .long("port"),
+                )
                 .arg(Arg::new("open").takes_value(false).short('o').long("open")),
         )
         .get_matches();
@@ -172,6 +167,11 @@ fn main() -> Result<()> {
         .subcommand_matches("markdown")
         .unwrap()
         .value_of("README")
+        .unwrap();
+    let hostname = args
+        .subcommand_matches("markdown")
+        .unwrap()
+        .value_of("HOSTNAME")
         .unwrap();
     let port: usize = args
         .subcommand_matches("markdown")
@@ -185,9 +185,17 @@ fn main() -> Result<()> {
 
     //set up the console
     let mut term = Term::stdout();
-    term.set_title("cargo registry readme");
+    term.set_title("cargo-markdown");
     term.hide_cursor()?;
     term.clear_screen()?;
+    term.write_line(
+        format!(
+            "{} by {} (Ctrl-C to quit)\n",
+            &style(format!("{} cargo-markdown", Emoji("🦀", ""),)).fg(Color::Color256(166)),
+            &style("@rrrodzilla").fg(Color::Color256(166))
+        )
+        .as_str(),
+    )?;
 
     //verify the readme file exists
     match fs::read_to_string(&readme) {
@@ -232,7 +240,7 @@ fn main() -> Result<()> {
             stream.flush().ok();
 
             //write to the console
-            term_c.move_cursor_to(1, 5).ok();
+            term_c.move_cursor_to(1, 7).ok();
             term_c.clear_line().ok();
             term_c
                 .write(
@@ -339,19 +347,26 @@ fn main() -> Result<()> {
             spawn_websockets(request, ws_stream.clone())?;
 
             //let the user know we're ready to hot reload
-            term.move_cursor_to(1, 4)?;
+            term.move_cursor_to(1, 6)?;
             term.clear_line()?;
             term.write_all(
                 format!(
                     "{} {}",
                     Emoji("🔥", ""),
-                    style("hot reload standing by...").fg(Color::Color256(214))
+                    style("hot reload standing by...").fg(Color::Color256(166))
                 )
                 .as_bytes(),
             )?;
 
             continue;
         };
+
+        //if we have a different hostname, we're probably using ngrok so use port 80 for web
+        //sockets
+        let mut port = port;
+        if !hostname.eq("127.0.0.1") {
+            port = 80
+        }
 
         //handle the various requests
         match request.url() {
@@ -371,7 +386,8 @@ fn main() -> Result<()> {
             "/ws.js" => request.respond(
                 Response::from_string(
                     include_str!("../../wireframes/crates/src/ws.js")
-                        .replace("{hot_reload_port}", &port.to_string()),
+                        .replace("{hot_reload_port}", &port.to_string())
+                        .replace("{hot_reload_host}", hostname),
                 )
                 .with_header("Content-Type: text/javascript".parse::<Header>().unwrap()),
             )?,

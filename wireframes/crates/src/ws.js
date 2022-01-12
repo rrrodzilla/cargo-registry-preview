@@ -7,7 +7,7 @@ const hot_reloader = {
         clearTimeout(this.retry_id);
     },
     connect: function(should_reload) {
-        var socket = new WebSocket("ws://localhost:{hot_reload_port}/ws", "hot_reload");
+        var socket = new WebSocket("ws://{hot_reload_host}:{hot_reload_port}/ws", "hot_reload");
         socket.onopen = function(event) {
             if (should_reload) {
                 location.reload(true);
