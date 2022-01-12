@@ -6,12 +6,14 @@
         @apply font-sans text-[#383838];
     }
     hr { border-style: inset; }
- }
+    a { @apply text-[#00ac5b]; }
+}
 
 @layer components {
     .wrapper {
         @apply leading-normal break-words first:mt-0 last:mb-0;
     }
+    /*
     .wrapper h1 {
         @apply text-[2em] first:mt-0 my-[.67em] font-bold box-border;
     }
@@ -45,6 +47,7 @@
     .wrapper hr {
         @apply block h-0 my-[0.5em] box-border;
     }
+    */
     .wrapper img {
         @apply max-w-full inline;
     }
