@@ -202,9 +202,10 @@ fn main() -> Result<()> {
         Ok(_) => {
             //let user know we're watching their file
             term.write_line(&format!(
-                "{} {}",
+                "{} {} {}",
                 Emoji("🟢", ""),
-                style("found readme").fg(Color::Color256(2))
+                style("found readme at").fg(Color::Color256(2)),
+                style(readme).fg(Color::Color256(2))
             ))?;
         }
         Err(_) => {

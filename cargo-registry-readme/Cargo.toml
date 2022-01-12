@@ -5,7 +5,13 @@ version = "0.1.0"
 edition = "2021"
 authors = ["rrrodzilla@protonmail.com"]
 description = "Local crates.io readme development server with ultra-fast hot reloading goodness"
+repository = "https://github.com/rrrodzilla/cargo-registry-preview"
 readme = "readme.md"
+license = "MIT OR Apache-2.0"
+keywords = ["cli", "readme", "cargo", "subcommand", "mockup"]
+categories = ["command-line-utilities", "development-tools::cargo-plugins", "development-tools::testing", "development-tools"]
+documentation = "https://docs.rs/cargo-markdown/latest/cargo-markdown/"
+
 
 [dependencies]
 anyhow = "1.0.52"
