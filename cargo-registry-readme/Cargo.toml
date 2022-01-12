@@ -3,8 +3,9 @@
 name = "cargo-markdown"
 version = "0.1.0"
 edition = "2021"
-author = "rrrodzilla@protonmail.com"
-decription = "Local crates.io readme development server with ultra-fast hot reloading goodness"
+authors = ["rrrodzilla@protonmail.com"]
+description = "Local crates.io readme development server with ultra-fast hot reloading goodness"
+readme = "readme.md"
 
 [dependencies]
 anyhow = "1.0.52"
