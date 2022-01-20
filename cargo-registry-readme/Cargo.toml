@@ -1,7 +1,7 @@
 
 [package]
 name = "cargo-markdown"
-version = "1.0.1"
+version = "1.0.2"
 edition = "2021"
 authors = ["rrrodzilla@protonmail.com"]
 description = "Local crates.io readme development server with ultra-fast hot reloading goodness"
