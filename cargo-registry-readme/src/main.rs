@@ -407,7 +407,7 @@ fn main() -> Result<()> {
             )?,
             //respond with the minified css file
             "/output.css" => request.respond(
-                Response::from_data(include_bytes!("../assets/crates/dist/output.css").as_ref())
+                Response::from_data(include_bytes!("../assets/crates/out/output.css").as_ref())
                     .with_header("Content-Type: text/css".parse::<Header>().unwrap()),
             )?,
             //respond with Ferris B. Rustacean image file
